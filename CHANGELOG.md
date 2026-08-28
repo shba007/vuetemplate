@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.0.3
+
+[compare changes](https://github.com/shba007/vuetemplate/compare/v0.0.2...v0.0.3)
+
+### 🚀 Enhancements
+
+- **tauri:** Refactor tauri builder initialization ([03cea30](https://github.com/shba007/vuetemplate/commit/03cea30))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.0.2
 
 [compare changes](https://github.com/shba007/vuetemplate/compare/v0.0.1...v0.0.2)
