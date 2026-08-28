@@ -18,7 +18,13 @@
     "format": "vp fmt src/",
     "test:unit": "vp test",
     "build": "vp build",
-    "preview": "vp preview"
+    "preview": "vp preview",
+    "clean": "(cd src-tauri && cargo clean)",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build",
+    "tauri:dev:mobile": "tauri android dev",
+    "tauri:build:mobile": "tauri android build"
   },
   "dependencies": {
     "pinia": "^4.0.3",
@@ -27,6 +33,7 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "@tauri-apps/cli": "^2.11.4",
     "@tsconfig/node24": "^24.0.5",
     "@types/jsdom": "^30.0.0",
     "@types/node": "^26.4.0",

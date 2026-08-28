@@ -1,54 +1,206 @@
-# vuetemplate
+<p align="center">
+  <img src="./public/logo.png" lt="Logo" width="65" />
+<p>
 
-This template should help get you started developing with Vue 3 in Vite.
+# VueTemplate
 
-## Recommended IDE Setup
+![Landing](public/previews/landing.webp)
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+> Vue + Typescript + Tailwind + Tauri Template
 
-## Recommended Browser Setup
+- 📦 SSR
+- 🖼️ OG Tags
+- 🚀 PWA
+- ✋ Push Notification
+- 🌙 Light/Dark Mode
+- 🐋 Containerized
+- 🪄 CI/CD (Github Action)
+- 🎭 Authentication (OAuth 2.0)
+- ⚡️ API Route Caching
+- 📐 Analytics
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+# Todo
 
-## Type Support for `.vue` Imports in TS
+- [ ] Add Testing
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## External Dependencies
 
-## Customize configuration
+- gitleaks
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Clone Template
 
-## Project Setup
+Clone the template
 
-```sh
-bun install
+```bash
+bunx giget@latest gh:shba007/vuetemplate#<branch> <project>
 ```
 
-### Compile and Hot-Reload for Development
+## Change Placeholder Value
 
-```sh
-bun dev
+### In docker-compose.yml
+
+- name
+- image
+- port
+
+### In package.json change the following
+
+- name
+- description
+- docker:build
+- docker:start
+
+### In nuxt.config.ts change the following
+
+- site
+  - url
+  - name
+- pwa
+  - manifest
+    - name
+    - short_name
+    - description
+    - theme_color
+    - background_color
+
+### In tailwind.config.ts change the following
+
+- fontFamily
+  - head
+  - body
+- colors
+  - light
+  - dark
+  - primary
+  - success
+  - warning
+  - alert
+
+### In src-tauri/Cargo.toml change the following
+
+- name
+- description
+- repository
+
+### In src-tauri/tauri.conf.json change the following
+
+- productName
+- identifier
+- app
+  - windows
+    - title
+
+### In .github\workflows\deploy.yml change the following
+
+- asset_name [deploy.yml](.github/workflows/deploy.yml) in line 271
+
+### In github registry add Repo or Org Vars following
+
+- Vars
+  - USERNAME
+
+## Change the Icons and Screenshots
+
+dir public/pwa
+
+## Generate Logo
+
+bun tauri icon ./public/logo.svg
+
+## Reinitialize Android
+
+rm -rf src-tauri/gen/android
+bun tauri android init
+
+set tauri.conf.json to "version": "../package.json",
+
+## Signing Config
+
+goto src-tauri/gen/android/app/build.gradle.kts
+
+```kotlin
+import java.io.FileInputStream
+
+signingConfigs {
+    create("release") {
+        val keystorePropertiesFile = rootProject.file("keystore.properties")
+        val keystoreProperties = Properties()
+        if (keystorePropertiesFile.exists()) {
+            keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+        }
+
+        keyAlias = keystoreProperties["keyAlias"] as String
+        keyPassword = keystoreProperties["password"] as String
+        storeFile = file(keystoreProperties["storeFile"] as String)
+        storePassword = keystoreProperties["password"] as String
+    }
+}
+
+signingConfig = signingConfigs.getByName("release")
 ```
 
-### Type-Check, Compile and Minify for Production
+put release-keystore.jks, keystore.properties into src-tauri/gen/android
 
-```sh
-bun run build
+add those files into the .gitignore on the same folder
+
+## Development Server
+
+Start the development server on `http://localhost:3000`:
+
+## How to Deploy
+
+1. Initialize Swarm on the Manager Node
+
+```bash
+docker swarm init --advertise-addr <MANAGER-IP>
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+2. Join Worker Nodes to the Swarm
 
-```sh
-bun test:unit
+```bash
+docker swarm join --token <WORKER-TOKEN> <MANAGER-IP>:2377
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+3. Check Node Status
 
-```sh
-bun lint
+```bash
+docker node ls
 ```
+
+4. Create a docker volume
+
+```bash
+docker volume create \
+  --name vuetemplate_static \
+  --driver local \
+  --opt type=none \
+  --opt device=~/shba007/vuetemplate/static \
+  --opt o=bind
+```
+
+5. Use Docker Stack to deploy multi-container application
+
+```bash
+upload static into /root/vuetemplate
+```
+
+6. Scale service
+
+```bash
+docker service scale vuetemplate_app=2
+```
+
+7. Verify
+
+```bash
+docker service ls
+docker service ps vuetemplate_app
+```
+
+## License
+
+Published under the [MIT](https://github.com/shba007/vuetemplate/blob/main/LICENSE) license.
+<br><br>
+<a href="https://github.com/shba007/vuetemplate/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=shba007/vuetemplate" />
+</a>

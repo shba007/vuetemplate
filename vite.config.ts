@@ -97,6 +97,11 @@ export default defineConfig({
     ],
   },
   plugins: lazyPlugins(() => [vue(), vueDevTools(), tailwindcss()]),
+  server: {
+    watch: {
+      ignored: ['**/src-tauri/**'],
+    },
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
