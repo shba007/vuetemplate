@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.0.2
+
+[compare changes](https://github.com/shba007/vuetemplate/compare/v0.0.1...v0.0.2)
+
+### 🚀 Enhancements
+
+- **android:** Initialize Android project structure and resources ([51d1040](https://github.com/shba007/vuetemplate/commit/51d1040))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.0.1
 
 ### 🚀 Enhancements
