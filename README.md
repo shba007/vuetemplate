@@ -112,6 +112,10 @@ set tauri.conf.json to "version": "../package.json",
 
 ## Appstore Signing Config
 
+keytool -genkey -v -keystore release-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias release-key
+
+cat ./release-keystore.jks | base64
+
 goto src-tauri/gen/android/app/build.gradle.kts
 
 ```kotlin

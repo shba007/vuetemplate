@@ -292,7 +292,15 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: src-tauri/gen/android/app/build/outputs/apk/universal/release/app-universal-release.apk
-          asset_name: nuxtemplate_${{ env.VERSION }}_arm64.apk
+          asset_name: vuetemplate_${{ env.VERSION }}_arm64.apk
+          tag: ${{ env.VERSION }}
+
+      - name: ⚙️ Upload Artifact
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: src-tauri/gen/android/app/build/outputs/bundle/universalRelease/app-universal-release.aab
+          asset_name: vuetemplate_${{ env.VERSION }}_arm64.aab
           tag: ${{ env.VERSION }}
 
   # deploy-mobile:
