@@ -38,6 +38,13 @@
     ],
     "android": {
       "debugApplicationIdSuffix": ".debug"
+    },
+    "createUpdaterArtifacts": true
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEIwM0Q3QzY3OEIwQjRBMzAKUldRd1NndUxaM3c5c0JzTXd2cnZWblVCY1JmamRvbFgyZlovdVA1Q09ucHprRi92WGQ2cTl4UTYK",
+      "endpoints": ["https://github.com/shba007/vuetemplate/releases/latest/download/latest.json"]
     }
   }
 }

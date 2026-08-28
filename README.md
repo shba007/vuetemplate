@@ -8,15 +8,11 @@
 
 > Vue + Typescript + Tailwind + Tauri Template
 
-- 📦 SSR
-- 🖼️ OG Tags
 - 🚀 PWA
 - ✋ Push Notification
 - 🌙 Light/Dark Mode
 - 🐋 Containerized
 - 🪄 CI/CD (Github Action)
-- 🎭 Authentication (OAuth 2.0)
-- ⚡️ API Route Caching
 - 📐 Analytics
 
 # Todo
@@ -142,6 +138,29 @@ signingConfig = signingConfigs.getByName("release")
 put release-keystore.jks, keystore.properties into src-tauri/gen/android
 
 add those files into the .gitignore on the same folder
+
+###
+
+bun x tauri signer generate -w ./src-tauri/app-sign.key
+
+Create two GitHub Repository secrets:
+
+TAURI_SIGNING_PRIVATE_KEY: The raw content of your private key file (open ~/.tauri/myapp.key and copy the entire string).
+
+TAURI_SIGNING_PRIVATE_KEY_PASSWORD: The password you entered when generating the key (leave empty if no password was set).
+
+"bundle": {
+...
+"createUpdaterArtifacts": true
+},
+"plugins": {
+"updater": {
+"pubkey": "YOUR_PUBLIC_KEY_STRING_HERE",
+"endpoints": [
+"https://github.com/{{targetOwner}}/{{targetRepo}}/releases/latest/download/latest.json"
+]
+}
+}
 
 ## Development Server
 
