@@ -110,7 +110,7 @@ bun tauri android init
 
 set tauri.conf.json to "version": "../package.json",
 
-## Signing Config
+## Appstore Signing Config
 
 goto src-tauri/gen/android/app/build.gradle.kts
 
@@ -139,28 +139,46 @@ put release-keystore.jks, keystore.properties into src-tauri/gen/android
 
 add those files into the .gitignore on the same folder
 
-###
+### Desktop Updater Signing Config
 
+**1. Generate Keypair**
+
+```bash
 bun x tauri signer generate -w ./src-tauri/app-sign.key
 
-Create two GitHub Repository secrets:
+```
 
-TAURI_SIGNING_PRIVATE_KEY: The raw content of your private key file (open ~/.tauri/myapp.key and copy the entire string).
+_Copy the public key printed in the terminal._
 
-TAURI_SIGNING_PRIVATE_KEY_PASSWORD: The password you entered when generating the key (leave empty if no password was set).
+**2. Add GitHub Repository Secrets**
 
-"bundle": {
-...
-"createUpdaterArtifacts": true
-},
-"plugins": {
-"updater": {
-"pubkey": "YOUR_PUBLIC_KEY_STRING_HERE",
-"endpoints": [
-"https://github.com/{{targetOwner}}/{{targetRepo}}/releases/latest/download/latest.json"
-]
+Go to **Settings** → **Secrets and variables** → **Actions**:
+
+- `TAURI_SIGNING_PRIVATE_KEY`: Content of `./src-tauri/app-sign.key`
+- `TAURI_SIGNING_PRIVATE_KEY_PASSWORD`: Key password (leave empty if none)
+
+**3. Configure `src-tauri/tauri.conf.json**`
+
+```json
+{
+  "bundle": {
+    "createUpdaterArtifacts": true
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "YOUR_PUBLIC_KEY_HERE",
+      "endpoints": ["https://github.com/<OWNER>/<REPO>/releases/latest/download/latest.json"]
+    }
+  }
 }
-}
+```
+
+**4. Add Key to `.gitignore**`
+
+```gitignore
+src-tauri/app-sign.key
+
+```
 
 ## Development Server
 
