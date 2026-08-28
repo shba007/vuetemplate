@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.0.4
+
+[compare changes](https://github.com/shba007/vuetemplate/compare/v0.0.3...v0.0.4)
+
+### 🚀 Enhancements
+
+- Update artifact upload process and enhance README with keystore instructions ([59dbaee](https://github.com/shba007/vuetemplate/commit/59dbaee))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.0.3
 
 [compare changes](https://github.com/shba007/vuetemplate/compare/v0.0.2...v0.0.3)
