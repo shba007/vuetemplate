@@ -117,6 +117,9 @@ goto src-tauri/gen/android/app/build.gradle.kts
 ```kotlin
 import java.io.FileInputStream
 
+defaultConfig {
+...
+}
 signingConfigs {
     create("release") {
         val keystorePropertiesFile = rootProject.file("keystore.properties")
@@ -132,7 +135,11 @@ signingConfigs {
     }
 }
 
-signingConfig = signingConfigs.getByName("release")
+getByName("release") {
+    isMinifyEnabled = true
+    signingConfig = signingConfigs.getByName("release")
+...
+}
 ```
 
 put release-keystore.jks, keystore.properties into src-tauri/gen/android

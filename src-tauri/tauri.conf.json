@@ -1,8 +1,8 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "VueTemplate",
-  "version": "0.1.0",
-  "identifier": "com.tauri.dev",
+  "version": "../package.json",
+  "identifier": "dev.shirsendu-bairagi.vuetemplate",
   "build": {
     "frontendDist": "../dist",
     "devUrl": "http://localhost:5173",
