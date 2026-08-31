@@ -5,7 +5,7 @@ import { useAppUpdater } from './composables/useAppUpdater'
 const { version } = useAppUpdater({ checkOnStartup: true, autoInstall: true })
 
 onMounted(async () => {
-  console.log('App Version', version)
+  console.log('App Version', version.value)
 })
 </script>
 
