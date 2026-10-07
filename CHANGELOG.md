@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.0.6
+
+[compare changes](https://github.com/shba007/vuetemplate/compare/v0.0.5...v0.0.6)
+
+### 🏡 Chore
+
+- Update Rust edition and version, and dependencies in Cargo.toml ([1ac8bd0](https://github.com/shba007/vuetemplate/commit/1ac8bd0))
+- Update dependencies and versions in package.json and Cargo files ([7737c9a](https://github.com/shba007/vuetemplate/commit/7737c9a))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.0.5
 
 [compare changes](https://github.com/shba007/vuetemplate/compare/v0.0.4...v0.0.5)
