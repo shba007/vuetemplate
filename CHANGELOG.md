@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.0.7
+
+[compare changes](https://github.com/shba007/vuetemplate/compare/v0.0.6...v0.0.7)
+
+### 🏡 Chore
+
+- Update dependencies and package configurations ([63b3792](https://github.com/shba007/vuetemplate/commit/63b3792))
+- Downgrade tauri and tauri-plugin-updater versions in Cargo.toml ([5a5734b](https://github.com/shba007/vuetemplate/commit/5a5734b))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.0.6
 
 [compare changes](https://github.com/shba007/vuetemplate/compare/v0.0.5...v0.0.6)
