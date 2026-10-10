@@ -185,7 +185,7 @@ jobs:
             'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
 
       - name: 🛠️ Setup Vite-Plus
-        uses: voidzero-dev/setup-vp@v1
+        uses: voidzero-dev/setup-vp@v1.21.1
         with:
           node-version: 'lts/*'
           cache: true
@@ -272,7 +272,7 @@ jobs:
           targets: aarch64-linux-android,armv7-linux-androideabi,i686-linux-android,x86_64-linux-android
 
       - name: 🛠️ Setup Vite-Plus
-        uses: voidzero-dev/setup-vp@v1
+        uses: voidzero-dev/setup-vp@v1.21.1
         with:
           node-version: 'lts'
           cache: true
