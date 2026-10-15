@@ -4,6 +4,7 @@ import { defineConfig, lazyPlugins } from 'vite-plus'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import tailwindcss from '@tailwindcss/vite'
+import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -96,7 +97,50 @@ export default defineConfig({
       },
     ],
   },
-  plugins: lazyPlugins(() => [vue(), vueDevTools(), tailwindcss()]),
+  plugins: lazyPlugins(() => [
+    vue(),
+    vueDevTools(),
+    tailwindcss(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      includeAssets: ['favicon.ico', 'logo.png', 'pwa/*.png'],
+      manifest: {
+        name: 'VueTemplate',
+        short_name: 'VueTemplate',
+        description: 'Vue + Typescript + Tailwind + Tauri Template',
+        theme_color: '#ffffff',
+        background_color: '#ffffff',
+        display: 'standalone',
+        icons: [
+          {
+            src: '/pwa/pwa-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: '/pwa/pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+          {
+            src: '/pwa/pwa-maskable-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'maskable',
+          },
+          {
+            src: '/pwa/pwa-maskable-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable',
+          },
+        ],
+      },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,webp}'],
+      },
+    }),
+  ]),
   server: {
     watch: {
       ignored: ['**/src-tauri/**'],
