@@ -183,12 +183,6 @@ jobs:
           # Those targets are only used on macos runners so it's in an `if` to slightly speed up windows and linux builds.
           targets: ${{ matrix.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
 
-      - name: 🛠️ Setup Vite-Plus
-        uses: voidzero-dev/setup-vp@v1.21.2
-        with:
-          node-version: 'lts/*'
-          cache: true
-
       - name: 🛠️ Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
@@ -269,12 +263,6 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         with:
           targets: aarch64-linux-android,armv7-linux-androideabi,i686-linux-android,x86_64-linux-android
-
-      - name: 🛠️ Setup Vite-Plus
-        uses: voidzero-dev/setup-vp@v1.21.2
-        with:
-          node-version: 'lts'
-          cache: true
 
       - name: 🛠️ Setup Bun
         uses: oven-sh/setup-bun@v2

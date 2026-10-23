@@ -380,7 +380,7 @@ bun run docker:start
 
 The repository uses [Husky](https://typicode.github.io/husky/) with automated pre-commit and commit-msg hooks:
 
-- **`pre-commit`**: Runs `gitleaks` (if installed) on staged files, followed by `bun lint <files>` and `bun format <files>`.
+- **`pre-commit`**: Scans the staged diff with Gitleaks when installed, then runs `vp staged` using the tasks configured in `vite.config.ts`.
 - **`commit-msg`**: Validates commit messages with `@commitlint/cli` using Conventional Commits.
 
 ### Code Style & Formatting
