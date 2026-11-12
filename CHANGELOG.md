@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.0.8
+
+[compare changes](https://github.com/shba007/vuetemplate/compare/v0.0.7...v0.0.8)
+
+### 🚀 Enhancements
+
+- Integrate PWA support and enhance app functionality ([bf542fe](https://github.com/shba007/vuetemplate/commit/bf542fe))
+
+### 🏡 Chore
+
+- Update pre-commit hook to streamline gitleaks scanning and task execution ([35ff6e6](https://github.com/shba007/vuetemplate/commit/35ff6e6))
+- Update dependencies and devDependencies in package.json ([4b507aa](https://github.com/shba007/vuetemplate/commit/4b507aa))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.0.7
 
 [compare changes](https://github.com/shba007/vuetemplate/compare/v0.0.6...v0.0.7)
